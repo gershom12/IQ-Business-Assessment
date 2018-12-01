@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+        <f:metadata>
+            <f:viewParam name="empId" value="#{addEmployee.employeeId}"/>
+            <f:event type="preRenderView" listener="#{addEmployee.before}"/>
+        </f:metadata>
+    </f:view>
+
+    <h:head>
+        <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+        <h:outputStylesheet name="applicationcss.css" library="css"/>
+    </h:head>
+    <h:body>
+        <b:container>
+            <h:form prependId="false">
+                <b:growl id="growl" showDetail="true" showSummary="false" allowDismiss="true" placementAlign="center"/>
+                <b:panel collapsible="false" >
+                    <b:panelGrid columns="2" colSpans="6,6" styleClass="ui-fluid">
+                        <b:formGroup>
+                            <p:outputLabel value="First Name"/>
+                            <p:inputText value="#{addEmployee.employee.person.firstName}" required="true" requiredMessage="Enter first name"/>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Last Name"/>
+                            <p:inputText value="#{addEmployee.employee.person.lastName}" required="true" requiredMessage="Enter last name"/>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Employee Number"/>
+                            <p:inputText value="#{addEmployee.employee.employeeNumber}" required="true" requiredMessage="Enter employee number"/>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Designation"/>
+                            <p:inputText value="#{addEmployee.employee.designation}" required="true" requiredMessage="Enter designation number"/>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Mobile Number"/>
+                            <p:inputText value="#{addEmployee.employee.person.mobileNumber}" required="true" requiredMessage="Enter mobile number"/>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Telephone Number"/>
+                            <p:inputText value="#{addEmployee.employee.person.telephoneNumber}" required="true" requiredMessage="Enter telephone number"/>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Email"/>
+                            <p:inputText value="#{addEmployee.employee.person.email}" required="true"  requiredMessage="Enter email address" validatorMessage="Invalid email format">
+                                <f:validateRegex
+                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputText>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Date of birth"/>
+                            <p:calendar value="#{addEmployee.employee.person.dateOfBirth}" required="true" pattern="dd MMM yyyy " requiredMessage="Enter date of birth">
+                            </p:calendar>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Facebook handle"/>
+                            <p:inputText value="#{addEmployee.employee.person.facebookHandle}" required="true" requiredMessage="Enter facebook handle"/>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <p:outputLabel value="Twitter handle"/>
+                            <p:inputText value="#{addEmployee.employee.person.twitterHandle}" required="true" requiredMessage="Enter twitter handle"/>
+                        </b:formGroup>
+                    </b:panelGrid>
+                    <b:panelGrid columns="2" colSpans="6,6" styleClass="ui-fluid">
+                        <p:dataList value="#{addEmployee.employee.person.addresses}" var="address" type="definition">
+                            <p:fieldset legend="#{address.addressType}">
+                                <b:formGroup>
+                                    <p:outputLabel value="Line1"/>
+                                    <p:inputText value="#{address.line1}" required="true" requiredMessage="Enter first name"/>
+                                </b:formGroup>
+                                <b:formGroup>
+                                    <p:outputLabel value="Line2"/>
+                                    <p:inputText value="#{address.line2}" required="true" requiredMessage="Enter last name"/>
+                                </b:formGroup>
+                                <b:formGroup>
+                                    <p:outputLabel value="Line4"/>
+                                    <p:inputText value="#{address.line3}" required="true" requiredMessage="Enter employee number"/>
+                                </b:formGroup>
+                                <b:formGroup>
+                                    <p:outputLabel value="Line4"/>
+                                    <p:inputText value="#{address.line4}" required="true" requiredMessage="Enter designation number"/>
+                                </b:formGroup>
+                                <b:formGroup>
+                                    <p:outputLabel value="Suburb"/>
+                                    <p:inputText value="#{address.surbub}" required="true" requiredMessage="Enter mobile number"/>
+                                </b:formGroup>
+                                <b:formGroup>
+                                    <p:outputLabel value="Postal Code"/>
+                                    <p:inputText value="#{address.postalCode}" required="true" requiredMessage="Enter telephone number"/>
+                                </b:formGroup>
+                            </p:fieldset>
+                        </p:dataList>
+                    </b:panelGrid>
+                    <f:facet name="footer">
+                        <p:toolbar>
+                            <f:facet name="right">
+                                <p:commandButton value="Save" action="#{addEmployee.save(addEmployee.employee)}" icon="fa fa-fw fa-save" update="@form" ajax="false"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </f:facet>
+                </b:panel>
+            </h:form>
+        </b:container>
+    </h:body>
+</html>
