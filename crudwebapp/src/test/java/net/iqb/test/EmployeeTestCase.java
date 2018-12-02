@@ -35,6 +35,9 @@ public class EmployeeTestCase {
     
     @Autowired
     private EmployeeServiceLocal employeeService;
+    
+    private Employee employee;
+    
     public EmployeeTestCase() {
     }
     
@@ -104,13 +107,14 @@ public class EmployeeTestCase {
         
         employee.setPerson(person);
         Long empId = employeeService.save(employee);
+        this.employee = employee; 
         Employee persistentEmployee = employeeService.find(empId);
         //System.out.println("Id = "+ persistentEmployee.getId());
         Assert.assertNotNull(empId);
         
-       // Assert.assertEquals(employee.getDesignation(),persistentEmployee.getDesignation());
-       // Assert.assertEquals(employee.getEmployeeNumber(),persistentEmployee.getEmployeeNumber());
-       // Assert.assertEquals(employee.getPerson(),persistentEmployee.getPerson());
+        Assert.assertEquals(employee.getDesignation(),persistentEmployee.getDesignation());
+        Assert.assertEquals(employee.getEmployeeNumber(),persistentEmployee.getEmployeeNumber());
+        //Assert.assertEquals(employee.getPerson(),persistentEmployee.getPerson());
 
     }
     
@@ -121,4 +125,22 @@ public class EmployeeTestCase {
         Assert.assertTrue(!employees.isEmpty());
     }
     
+    @Test 
+    public void testDelete()
+    {
+
+        
+    }
+    
+    @Test
+    public void testFind()
+    {
+        
+    }
+    
+    @Test
+    public void testUpdate()
+    {
+        
+    }
 }
