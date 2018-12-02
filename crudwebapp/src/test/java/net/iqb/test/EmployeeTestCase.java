@@ -38,6 +38,8 @@ public class EmployeeTestCase {
     
     private Employee employee;
     
+    private Long employeeId;
+    
     public EmployeeTestCase() {
     }
     
@@ -51,16 +53,8 @@ public class EmployeeTestCase {
     
     @Before
     public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-    
-    @Test
-    public void testEntityPersistence(){
         
-        Employee employee = new Employee();
+        employee = new Employee();
         employee.setCreatedBy("Gershom");
         employee.setCreatedDate(new Date());
         employee.setDesignation("Developer");
@@ -106,15 +100,20 @@ public class EmployeeTestCase {
         person.addAddress(resAddress);
         
         employee.setPerson(person);
-        Long empId = employeeService.save(employee);
-        this.employee = employee; 
-        Employee persistentEmployee = employeeService.find(empId);
-        //System.out.println("Id = "+ persistentEmployee.getId());
-        Assert.assertNotNull(empId);
+        employeeId = employeeService.save(employee);
+    }
+    
+    @After
+    public void tearDown() {
+    }
+    
+    @Test
+    public void testEntityPersistence(){
         
+        Employee persistentEmployee = employeeService.find(employeeId);
+        Assert.assertNotNull(employeeId);
         Assert.assertEquals(employee.getDesignation(),persistentEmployee.getDesignation());
         Assert.assertEquals(employee.getEmployeeNumber(),persistentEmployee.getEmployeeNumber());
-        //Assert.assertEquals(employee.getPerson(),persistentEmployee.getPerson());
 
     }
     
@@ -128,19 +127,27 @@ public class EmployeeTestCase {
     @Test 
     public void testDelete()
     {
-
-        
+        //employeeService.delete(employee);
+        //Assert.assertNull(employeeService.find(employeeId));
     }
     
     @Test
     public void testFind()
     {
-        
+         Employee emp = employeeService.find(employee.getId());
+         Assert.assertEquals(employee.getDesignation(),emp.getDesignation());
+         Assert.assertEquals(employee.getEmployeeNumber(),employee.getEmployeeNumber());
     }
     
     @Test
     public void testUpdate()
     {
-        
+        employee.setDesignation("Senior developer");
+        employee.setEmployeeNumber("453");
+        employee.getPerson().setFirstName("Mike");
+        employeeService.update(employee);
+        Assert.assertEquals(employee.getDesignation(),"Senior developer");
+        Assert.assertEquals(employee.getEmployeeNumber(),"453");
+        Assert.assertEquals(employee.getPerson().getFirstName(),"Mike");
     }
 }
