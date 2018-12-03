@@ -25,7 +25,7 @@
 2.	Create a postgres database named “empdb” on PgAdmin 
 3.	Make sure that the username and password on DataSourceUtilty.java matches the the credentials you used on the postgreSQL server created on PgAdmin 
 
-##How to run
+## How to run
 
 1.	Install wildfly 10.0
 
