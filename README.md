@@ -1,6 +1,6 @@
 # IQ-Business-Assessment
 
- Project setup 
+ ##Project setup 
 
 The runtime environment for the project are
 1.	Java 8
