@@ -2,7 +2,7 @@
 
  ## Project setup 
 
-The runtime environment for the project are
+## The runtime environment for the project are
 1.	Java 8
 2.	Wildfly 10.0
 3.	PostgreSQL 11 and PgAdmin IV
