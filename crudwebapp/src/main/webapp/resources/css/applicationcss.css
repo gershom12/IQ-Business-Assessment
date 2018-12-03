@@ -7,9 +7,27 @@ and open the template in the editor.
     Created on : Dec 1, 2018, 5:23:57 PM
     Author     : gershom
 */
-
-.contentCss
-{
-    height:600px !important;
+.smallwidth{
+    width: 70px;
+}
+.homepage{
+    color: #204d74;
+    font-size:14px;  
+    font-weight: bold;
+    font-style: normal;
+    text-transform: uppercase;
+}
+.footertext{
+    color: #204d74;
+    font-size:9px;  
+    font-weight: lighter;
+    font-style: italic;
+}
+.headerText{
+    color: #204d74;
+    font-size:20px;  
+    font-weight: bold;
+    font-style: normal;  
+    text-transform: uppercase;
 }
 

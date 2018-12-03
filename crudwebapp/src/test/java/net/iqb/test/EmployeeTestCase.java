@@ -1,4 +1,3 @@
-
 package net.iqb.test;
 
 import java.util.Date;
@@ -27,54 +26,96 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author gershom
  */
-
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @ContextConfiguration(classes = ApplicationConfig.class)
 public class EmployeeTestCase {
-    
+
     @Autowired
     private EmployeeServiceLocal employeeService;
-    
+
     private Employee employee;
-    
+
     private Long employeeId;
-    
+
     public EmployeeTestCase() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
+
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-        
+
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
+    public void testFind() {
+        Long id = persistEmp();
+        Employee persistentEmployee = employeeService.find(id);
+        Assert.assertEquals(employee.getDesignation(), persistentEmployee.getDesignation());
+        Assert.assertEquals(employee.getEmployeeNumber(), persistentEmployee.getEmployeeNumber());
+    }
+
+    @Test
+    public void testFindAll() {
+        List<Employee> employees = employeeService.findAll();
+        Assert.assertTrue(!employees.isEmpty());
+    }
+
+    @Test
+    public void testUpdate() {
+        Long id = persistEmp();
+
+        Employee emp = employeeService.find(id);
+        emp.setDesignation("Senior developer");
+        emp.setEmployeeNumber("453");
+        emp.getPerson().setFirstName("Mike");
+        employeeService.update(emp);
+
+        Assert.assertEquals("Senior developer", emp.getDesignation());
+        Assert.assertEquals("453", emp.getEmployeeNumber());
+        Assert.assertEquals("Mike", emp.getPerson().getFirstName());
+    }
+
+    @Test
+    public void testDelete() {
+        Long id = persistEmp();
+        employeeService.delete(employee);
+        Employee emp = employeeService.find(id);
+        Assert.assertNull(emp);
+    }
+
+    private Long persistEmp() {
         employee = new Employee();
         employee.setCreatedBy("Gershom");
         employee.setCreatedDate(new Date());
         employee.setDesignation("Developer");
         employee.setEmployeeNumber("23");
-        
+
         Person person = new Person();
         person.setCreatedBy("Gershom");
         person.setCreatedDate(new Date());
-        person.setDateOfBirth(new Date());
         person.setEmail("gershom.mnaluleke1@gmail.com");
         person.setFacebookHandle("gershom12");
         person.setFirstName("Gershom");
         person.setLastName("Maluleke");
         person.setMobileNumber("0717890606");
         person.setPersonType(PersonType.EMPLOYEE);
-        person.setTelephoneNumber("011784923");
         person.setTwitterHandle("gershom12");
         person.setUpdatedBy("Gershom");
         person.setUpdatedDate(new Date());
-        
+
         Address postaAddress = new Address();
         postaAddress.setAddressType(AddressType.POSTAL);
         postaAddress.setCreatedBy("Gershom");
@@ -86,7 +127,7 @@ public class EmployeeTestCase {
         postaAddress.setSurbub("Centurion");
         postaAddress.setPostalCode("0002");
         person.addAddress(postaAddress);
-        
+
         Address resAddress = new Address();
         resAddress.setAddressType(AddressType.RESIDENTIAL);
         resAddress.setCreatedBy("Gershom");
@@ -98,56 +139,9 @@ public class EmployeeTestCase {
         resAddress.setSurbub("Centurion");
         resAddress.setPostalCode("0002");
         person.addAddress(resAddress);
-        
-        employee.setPerson(person);
-        employeeId = employeeService.save(employee);
-    }
-    
-    @After
-    public void tearDown() {
-    }
-    
-    @Test
-    public void testEntityPersistence(){
-        
-        Employee persistentEmployee = employeeService.find(employeeId);
-        Assert.assertNotNull(employeeId);
-        Assert.assertEquals(employee.getDesignation(),persistentEmployee.getDesignation());
-        Assert.assertEquals(employee.getEmployeeNumber(),persistentEmployee.getEmployeeNumber());
 
+        employee.setPerson(person);
+        return employeeService.save(employee);
     }
-    
-    @Test
-    public void testFindAll()
-    {
-        List<Employee> employees = employeeService.findAll();
-        Assert.assertTrue(!employees.isEmpty());
-    }
-    
-    @Test 
-    public void testDelete()
-    {
-        //employeeService.delete(employee);
-        //Assert.assertNull(employeeService.find(employeeId));
-    }
-    
-    @Test
-    public void testFind()
-    {
-         Employee emp = employeeService.find(employee.getId());
-         Assert.assertEquals(employee.getDesignation(),emp.getDesignation());
-         Assert.assertEquals(employee.getEmployeeNumber(),employee.getEmployeeNumber());
-    }
-    
-    @Test
-    public void testUpdate()
-    {
-        employee.setDesignation("Senior developer");
-        employee.setEmployeeNumber("453");
-        employee.getPerson().setFirstName("Mike");
-        employeeService.update(employee);
-        Assert.assertEquals(employee.getDesignation(),"Senior developer");
-        Assert.assertEquals(employee.getEmployeeNumber(),"453");
-        Assert.assertEquals(employee.getPerson().getFirstName(),"Mike");
-    }
+
 }

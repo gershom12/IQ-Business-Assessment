@@ -13,92 +13,50 @@
             <f:event type="preRenderView" listener="#{addEmployee.before}"/>
         </f:metadata>
     </f:view>
-
     <h:head>
         <h:outputStylesheet name="bootstrap.min.css" library="css"/>
         <h:outputStylesheet name="applicationcss.css" library="css"/>
     </h:head>
     <h:body>
-        <b:container>
+        <b:container fluid="true">
             <h:form prependId="false">
                 <b:growl id="growl" showDetail="true" showSummary="false" allowDismiss="true" placementAlign="center"/>
-                <b:panel collapsible="false" >
-                    <b:panelGrid columns="2" colSpans="6,6" styleClass="ui-fluid">
-                        <b:formGroup>
-                            <p:outputLabel value="First Name"/>
-                            <p:inputText value="#{addEmployee.employee.person.firstName}" required="true" requiredMessage="Enter first name"/>
-                        </b:formGroup>
-                        <b:formGroup>
-                            <p:outputLabel value="Last Name"/>
-                            <p:inputText value="#{addEmployee.employee.person.lastName}" required="true" requiredMessage="Enter last name"/>
-                        </b:formGroup>
-                        <b:formGroup>
-                            <p:outputLabel value="Employee Number"/>
-                            <p:inputText value="#{addEmployee.employee.employeeNumber}" required="true" requiredMessage="Enter employee number"/>
-                        </b:formGroup>
-                        <b:formGroup>
-                            <p:outputLabel value="Designation"/>
-                            <p:inputText value="#{addEmployee.employee.designation}" required="true" requiredMessage="Enter designation number"/>
-                        </b:formGroup>
-                        <b:formGroup>
-                            <p:outputLabel value="Mobile Number"/>
-                            <p:inputText value="#{addEmployee.employee.person.mobileNumber}" required="true" requiredMessage="Enter mobile number"/>
-                        </b:formGroup>
-                        <b:formGroup>
-                            <p:outputLabel value="Telephone Number"/>
-                            <p:inputText value="#{addEmployee.employee.person.telephoneNumber}" required="true" requiredMessage="Enter telephone number"/>
-                        </b:formGroup>
-                        <b:formGroup>
-                            <p:outputLabel value="Email"/>
-                            <p:inputText value="#{addEmployee.employee.person.email}" required="true"  requiredMessage="Enter email address" validatorMessage="Invalid email format">
-                                <f:validateRegex
-                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                            </p:inputText>
-                        </b:formGroup>
-                        <b:formGroup>
-                            <p:outputLabel value="Date of birth"/>
-                            <p:calendar value="#{addEmployee.employee.person.dateOfBirth}" required="true" pattern="dd MMM yyyy " requiredMessage="Enter date of birth">
-                            </p:calendar>
-                        </b:formGroup>
-                        <b:formGroup>
-                            <p:outputLabel value="Facebook handle"/>
-                            <p:inputText value="#{addEmployee.employee.person.facebookHandle}" required="true" requiredMessage="Enter facebook handle"/>
-                        </b:formGroup>
-                        <b:formGroup>
-                            <p:outputLabel value="Twitter handle"/>
-                            <p:inputText value="#{addEmployee.employee.person.twitterHandle}" required="true" requiredMessage="Enter twitter handle"/>
-                        </b:formGroup>
-                    </b:panelGrid>
-                    <b:panelGrid columns="2" colSpans="6,6" styleClass="ui-fluid">
-                        <p:dataList value="#{addEmployee.employee.person.addresses}" var="address" type="definition">
-                            <p:fieldset legend="#{address.addressType}">
-                                <b:formGroup>
-                                    <p:outputLabel value="Line1"/>
-                                    <p:inputText value="#{address.line1}" required="true" requiredMessage="Enter first name"/>
-                                </b:formGroup>
-                                <b:formGroup>
-                                    <p:outputLabel value="Line2"/>
-                                    <p:inputText value="#{address.line2}" required="true" requiredMessage="Enter last name"/>
-                                </b:formGroup>
-                                <b:formGroup>
-                                    <p:outputLabel value="Line4"/>
-                                    <p:inputText value="#{address.line3}" required="true" requiredMessage="Enter employee number"/>
-                                </b:formGroup>
-                                <b:formGroup>
-                                    <p:outputLabel value="Line4"/>
-                                    <p:inputText value="#{address.line4}" required="true" requiredMessage="Enter designation number"/>
-                                </b:formGroup>
-                                <b:formGroup>
-                                    <p:outputLabel value="Suburb"/>
-                                    <p:inputText value="#{address.surbub}" required="true" requiredMessage="Enter mobile number"/>
-                                </b:formGroup>
-                                <b:formGroup>
-                                    <p:outputLabel value="Postal Code"/>
-                                    <p:inputText value="#{address.postalCode}" required="true" requiredMessage="Enter telephone number"/>
-                                </b:formGroup>
-                            </p:fieldset>
-                        </p:dataList>
-                    </b:panelGrid>
+                <b:panel collapsible="false" colMd="12" title="#{addEmployee.panelHeaderName}">
+                    <b:row>
+                        <b:column col-xs="12" col-sm="12" col-md="12" col-lg="12">
+                            <b:panelGrid  colSpans="6,6" size="sm">
+                                <b:inputText small-screen="full-width"  fieldSize="md" label="First Name" value="#{addEmployee.employee.person.firstName}" required="true" requiredMessage="Enter first name"/>
+                                <b:inputText small-screen="full-width" fieldSize="md" label="Last Name" value="#{addEmployee.employee.person.lastName}" required="true" requiredMessage="Enter last name"/>
+                                <b:inputText small-screen="full-width" fieldSize="md" label="Mobile Number" value="#{addEmployee.employee.person.mobileNumber}" required="true" requiredMessage="Enter mobile Number"/>
+                                <b:inputText small-screen="full-width" fieldSize="md" label="Email" value="#{addEmployee.employee.person.email}" required="true"  requiredMessage="Enter email address" validatorMessage="Invalid email format">
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                </b:inputText>
+                                <b:inputText small-screen="full-width" fieldSize="md" label="Facebook Handle" value="#{addEmployee.employee.person.facebookHandle}"/>
+                                <b:inputText small-screen="full-width" fieldSize="md" label="Twitter Handle" value="#{addEmployee.employee.person.twitterHandle}"/>
+                            </b:panelGrid>
+                        </b:column>
+                    </b:row>
+                    <p:separator/>
+                    <p:dataTable value="#{addEmployee.employee.person.addresses}" var="address" paginator="false">
+                        <p:column headerText="Address Type">
+                            <h:outputText value="#{address.addressType}" />
+                        </p:column>
+                        <p:column headerText="Line1">
+                            <b:inputText fieldSize="md" value="#{address.line1}" />
+                        </p:column>
+                        <p:column headerText="Line2">
+                            <b:inputText fieldSize="md" value="#{address.line2}" />
+                        </p:column>
+                        <p:column headerText="Line3">
+                            <b:inputText fieldSize="md" value="#{address.line3}" />
+                        </p:column>
+                        <p:column headerText="Suburb">
+                            <b:inputText fieldSize="md" value="#{address.surbub}" />
+                        </p:column>
+                        <p:column headerText="PostalCode">
+                            <b:inputText fieldSize="md" value="#{address.postalCode}"/>                
+                        </p:column>
+                    </p:dataTable> 
                     <f:facet name="footer">
                         <p:toolbar>
                             <f:facet name="right">
