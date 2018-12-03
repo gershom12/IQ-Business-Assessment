@@ -2,10 +2,19 @@
 
  ## Project setup 
 
-## The runtime environment for the project are
-1.	Java 8
-2.	Wildfly 10.0
-3.	PostgreSQL 11 and PgAdmin IV
+## Technology stack
+
+1.	Hibernate 5.0.7 Final
+2.	Postgres 10
+3.	JSF 2.2.18
+4.	Bootfaces 1.3.0
+5.	Primefsaces 6.2
+6.	Bootstrap 3.3.7
+7.	Wildfly 10.0.0. Final
+8.	Maven 3.5.4
+9.	Junit 4.12
+10.	Spring framework 5.0.8
+
 
 ## Installation
 1.	Install maven 
