@@ -27,7 +27,7 @@
 
 ## How to run
 
-1.	Install wildfly 10.0
+1.	Install wildfly-10.0.0.Final
 
 2.	Drop PosgreSQL driver (postgresql-42.1.2.jar) into wildfly wildfly-10.0.0.Final\modules\system\layers\base\org\postgresql\main
 
