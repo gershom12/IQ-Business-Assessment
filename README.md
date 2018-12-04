@@ -33,7 +33,7 @@
 
 3. On the project folder,	compile the project using mvn clean install on the command line
 
-4.	Copy the war file from target folder and drop it on deployment folder folder 
+4.	Copy the war file from target folder and drop it on deployment folder
    C:\Program Files\wildfly-10.0.0.Final\standalone\deployments
 
 5.	Navigate to the bin folder on the wildfly installation folder. On the cmd type, ./standalone.sh to start the application server 
