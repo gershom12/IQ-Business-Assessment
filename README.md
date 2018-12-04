@@ -19,7 +19,7 @@
 ## Installation
 1.	Install maven 
 2.	Clone the repository from https://github.com/gershom12/IQ-Business-Assessment
-3.	Go to project repository via cmd and type “mvn clean install” to build the project and download all the required dependencies.
+3.	Go to project folder via cmd and type “mvn clean install” to build the project and download all the required dependencies.
 ## Database setup
 1.	Download and install postgresl and PgAdmin IV
 2.	Create a postgres database named “empdb” on PgAdmin 
@@ -30,15 +30,14 @@
 1.	Install wildfly 10.0
 
 2.	Drop PosgreSQL driver into wildfly  
+C:\Program Files\wildfly-10.0.0.Final\modules\system\layers\base\org\postgresql
 
-   C:\Program Files\wildfly-10.0.0.Final\modules\system\layers\base\org\postgresql
-
-3.	Compile using mvn clean install on the command line
+3. On the project folder,	compile the project using mvn clean install on the command line
 
 4.	Copy the war file from target folder and drop it on deployment folder folder 
 C:\Program Files\wildfly-10.0.0.Final\standalone\deployments
 
-5.	Start ./standalone.sh to start the server 
+5.	Navigate to the bin folder on the wildfly installation folder. Start ./standalone.sh to start the application server 
 
 6.	Open your browser and go to  http://localhost:8080/crudwebapp/", you should see a welcome page explaining what the application does and links on the menu section to navigate to the employee management section.
 
