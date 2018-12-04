@@ -36,7 +36,7 @@
 4.	Copy the war file from target folder and drop it on deployment folder folder 
    C:\Program Files\wildfly-10.0.0.Final\standalone\deployments
 
-5.	Navigate to the bin folder on the wildfly installation folder. Start ./standalone.sh to start the application server 
+5.	Navigate to the bin folder on the wildfly installation folder. On the cmd type, ./standalone.sh to start the application server 
 
 6.	Open your browser and go to  http://localhost:8080/crudwebapp/", you should see a welcome page explaining what the application does and links on the menu section to navigate to the employee management section.
 
