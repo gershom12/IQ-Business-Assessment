@@ -21,20 +21,19 @@
 2.	Clone the repository from https://github.com/gershom12/IQ-Business-Assessment
 3.	Go to project folder via cmd and type “mvn clean install” to build the project and download all the required dependencies.
 ## Database setup
-1.	Download and install postgresl and PgAdmin IV
+1.	Download and install postgresl and PgAdmin IV. The database can downloaded from https://www.postgresql.org/download/windows/
 2.	Create a postgres database named “empdb” on PgAdmin 
 3.	Make sure that the username and password on DataSourceUtilty.java matches the the credentials you used on the postgreSQL server created on PgAdmin 
 
 ## How to run
 
-1.	Install wildfly 10.0
+1.	Install wildfly-10.0.0.Final
 
-2.	Drop PosgreSQL driver into wildfly C:\Program Files\wildfly-10.0.0.Final\modules\system\layers\base\org\postgresql
+2.	copy and paste PosgreSQL driver (postgresql-42.1.2.jar) into wildfly: wildfly-10.0.0.Final\modules\system\layers\base\org\postgresql\main folder
 
 3. On the project folder,	compile the project using mvn clean install on the command line
 
-4.	Copy the war file from target folder and drop it on deployment folder
-   C:\Program Files\wildfly-10.0.0.Final\standalone\deployments
+4.	Copy the war file from target folder and drop it on deployment folder: wildfly-10.0.0.Final\standalone\deployments
 
 5.	Navigate to the bin folder on the wildfly installation folder. On the cmd type, ./standalone.sh to start the application server 
 
