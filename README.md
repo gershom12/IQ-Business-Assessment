@@ -31,7 +31,7 @@
 
 2.	Drop PosgreSQL driver into wildfly  
 
-C:\Program Files\wildfly-10.0.0.Final\modules\system\layers\base\org\postgresql
+   C:\Program Files\wildfly-10.0.0.Final\modules\system\layers\base\org\postgresql
 
 3.	Compile using mvn clean install on the command line
 
