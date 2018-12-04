@@ -29,11 +29,14 @@
 
 1.	Install wildfly-10.0.0.Final
 
-2.	Drop PosgreSQL driver (postgresql-42.1.2.jar) into wildfly wildfly-10.0.0.Final\modules\system\layers\base\org\postgresql\main
+2.	Drop PosgreSQL driver (postgresql-42.1.2.jar) into wildfly
+
+wildfly-10.0.0.Final\modules\system\layers\base\org\postgresql\main folder
 
 3. On the project folder,	compile the project using mvn clean install on the command line
 
 4.	Copy the war file from target folder and drop it on deployment folder
+
    wildfly-10.0.0.Final\standalone\deployments
 
 5.	Navigate to the bin folder on the wildfly installation folder. On the cmd type, ./standalone.sh to start the application server 
