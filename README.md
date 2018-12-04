@@ -35,14 +35,12 @@
 
 3.	Compile using mvn clean install on the command line
 
-4.	Run unit tests using mvn test
-
-5.	Copy the war file from target folder and drop it on deployment folder folder 
+4.	Copy the war file from target folder and drop it on deployment folder folder 
 C:\Program Files\wildfly-10.0.0.Final\standalone\deployments
 
-6.	Start ./standalone.sh to start the server 
+5.	Start ./standalone.sh to start the server 
 
-7.	Open your browser and go to  http://localhost:8080/crudwebapp/", you should see a welcome page explaining what the application does and links on the menu section to navigate to the employee management section.
+6.	Open your browser and go to  http://localhost:8080/crudwebapp/", you should see a welcome page explaining what the application does and links on the menu section to navigate to the employee management section.
 
 
 
